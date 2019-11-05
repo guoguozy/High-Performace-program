@@ -1,0 +1,7 @@
+#PBS -N gzy_ex3
+#PBS -l nodes=1:ppn=4
+#PBS -j oe
+
+echo "This is gzy's lab"$PBS_JOBID@PBS_QUEUE
+cd $PBS_O_WORKDIR
+./gzy_ex3 1 7
