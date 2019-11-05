@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ex4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="%E5%AE%9E%E9%AA%8C%E5%9B%9B-mpi%E5%AE%9E%E9%AA%8C"><strong>实验四 : MPI实验</strong></h1>
+<p>17341046 郭梓煜</p>
+<hr>
+<h2 id="%E5%AE%9E%E9%AA%8C%E7%9B%AE%E7%9A%84"><strong>实验目的</strong></h2>
+<hr>
+<ul>
+<li>实现并行梯形数值积分的MPI算法
+<ul>
+<li>用MPI的点对点通信函数完成梯形数值积分的并行算法</li>
+<li>用MPI的集合通信函数完成梯形数值积分的并行算法</li>
+<li>将上面的算法对瑕积分扩展</li>
+</ul>
+</li>
+<li>完成正则采样排序PSRS的MPI算法</li>
+<li>填写十二个表：Tp，S，E *4个算法 = 12张表</li>
+</ul>
+<h2 id="%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><strong>实验环境</strong></h2>
+<hr>
+<ul>
+<li>图形化管理文件: winscp</li>
+<li>编辑器: vscode</li>
+<li>语言: c++</li>
+<li>打开命令行界面: putty</li>
+<li>编译器: mpic++</li>
+<li>集群: 222.200.180.115</li>
+<li>source : /public/software/profile.d/mpi_openmpi-intel-2.1.2.sh</li>
+</ul>
+<h2 id="%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90"><strong>实验代码实现与分析</strong></h2>
+<hr>
+<h3 id="%E5%B9%B6%E8%A1%8C%E6%95%B0%E5%80%BC%E7%A7%AF%E5%88%86%E7%9A%84mpi%E7%AE%97%E6%B3%95"><strong>并行数值积分的MPI算法</strong></h3>
+<ol>
+<li><strong>使用MPI的点对点通信函数实现</strong></li>
+</ol>
+<ul>
+<li>MPI_Init : MPI初始化 ，MPI_Finalize : 结束MPI程序的运行</li>
+<li>MPI_Comm_rank : 获取进程的进程号 ，MPI_Comm_size : 获取进程个数</li>
+<li>MPI_Send : 发送消息 ，MPI_Recv : 接收消息</li>
+<li>实现并行数值积分只需在每个进程计算好各分块的积分，再MPI_Send给0号进程进行输出。<br>
+主要代码如下:<br>
+从命令行读取梯形的参数：<pre class="hljs"><code><div>left_h = atof(argv[<span class="hljs-number">1</span>]);  <span class="hljs-comment">//梯形左边高度</span>
+right_h = atof(argv[<span class="hljs-number">2</span>]); <span class="hljs-comment">//梯形右边高度</span>
+a = atof(argv[<span class="hljs-number">3</span>]);       <span class="hljs-comment">//左边坐标</span>
+b = atof(argv[<span class="hljs-number">4</span>]);       <span class="hljs-comment">//右边坐标</span>
+n = atoi(argv[<span class="hljs-number">5</span>]);       <span class="hljs-comment">//分块数量</span>
+</div></code></pre>
+根据计算得到本进程所计算的区间<pre class="hljs"><code><div>h = (b - a) / n;
+local_n = n / comm_sz;
+local_a = a + my_rank * local_n * h;<span class="hljs-comment">//计算区间左端点</span>
+local_b = local_a + local_n * h;<span class="hljs-comment">//计算区间右端点</span>
+</div></code></pre>
+计算本进程区间的积分
+<ul>
+<li>注释部分函数为正常梯形测试正确性所用，下面的是老师所要求函数。</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">double</span> left_h, right_h, a, b, c, d;
+<span class="hljs-keyword">int</span> n;
+<span class="hljs-comment">/* double f(double x)
+{
+    return (right_h - left_h) / (b - a) * (x - a) + left_h;
+}*/</span>
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">exp</span>(b * x) / <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">1</span> - <span class="hljs-built_in">exp</span>(-c * x));
+}
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Trap</span><span class="hljs-params">(<span class="hljs-keyword">double</span> left_endpt, <span class="hljs-keyword">double</span> right_endpt, <span class="hljs-keyword">int</span> trap_count, <span class="hljs-keyword">double</span> base_len)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (left_endpt == <span class="hljs-number">0</span>)
+        left_endpt = eps;
+    <span class="hljs-keyword">double</span> estimate, x;
+    estimate = (f(left_endpt) + f(right_endpt)) / <span class="hljs-number">2.0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= trap_count - <span class="hljs-number">1</span>; i++)
+    {
+        x = left_endpt + i * base_len;
+        estimate += f(x);
+    }
+    estimate = estimate * base_len;
+    <span class="hljs-keyword">return</span> estimate;
+}
+</div></code></pre>
+将各进程的积分结果发给0号，进行相加并由0号进程输出结果<pre class="hljs"><code><div>MPI_Init(&amp;argc,&amp;argv);
+MPI_Comm_rank(MPI_COMM_WORLD, &amp;my_rank);
+MPI_Comm_size(MPI_COMM_WORLD, &amp;comm_sz);
+
+h = (b - a) / n;
+local_n = n / comm_sz;
+
+local_a = a + my_rank * local_n * h;
+local_b = local_a + local_n * h;
+local_int = Trap(local_a, local_b, local_n, h); <span class="hljs-comment">//计算积分</span>
+
+<span class="hljs-keyword">if</span> (my_rank != <span class="hljs-number">0</span>)
+    MPI_Send(&amp;local_int, <span class="hljs-number">1</span>, MPI_DOUBLE, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, MPI_COMM_WORLD); <span class="hljs-comment">//发送给0号进程</span>
+<span class="hljs-keyword">else</span>
+{
+    total_int = local_int;
+    <span class="hljs-keyword">for</span> (source = <span class="hljs-number">1</span>; source &lt; comm_sz; source++)
+    {
+        MPI_Recv(&amp;local_int, <span class="hljs-number">1</span>, MPI_DOUBLE, source, <span class="hljs-number">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        total_int += local_int; <span class="hljs-comment">//计算总积分</span>
+    }
+}
+<span class="hljs-keyword">if</span> (my_rank == <span class="hljs-number">0</span>)
+{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"block number n= %d\n"</span>, n);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"The integral from %f to %f = %.15e\n"</span>, a, b, total_int);
+}
+MPI_Finalize();
+</div></code></pre>
+</li>
+</ul>
+<ol start="2">
+<li><strong>使用MPI的集合通信函数实现</strong></li>
+</ol>
+<ul>
+<li>MPI_Reduce : 归约操作，将各进程的积分结果归约到0号进程，相加并输出即可</li>
+<li>其余trap等计算函数及代码与点对点通信无异，此处便不多加展示。<pre class="hljs"><code><div>MPI_Reduce(&amp;local_int, &amp;total_int, <span class="hljs-number">1</span>, MPI_DOUBLE, MPI_SUM, <span class="hljs-number">0</span>, MPI_COMM_WORLD);
+<span class="hljs-keyword">if</span> (my_rank == <span class="hljs-number">0</span>)
+{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"block number n= %d\n"</span>, n);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"The integral from %f to %f = %.15e\n"</span>, a, b, total_int);
+}
+</div></code></pre>
+</li>
+</ul>
+<ol start="3">
+<li><strong>对瑕积分进行扩展</strong></li>
+</ol>
+<ul>
+<li>
+<p>对带瑕点的函数进行求积分，积分划分的区间不能是等长的，需要根据函数以及积分的精度问题进行区间的不同划分，即积分时要在瑕点处加密小区间，函数平缓处放宽小区间。</p>
+</li>
+<li>
+<p>有三种做法：</p>
+<ul>
+<li>一是先划分好每个进程所需处理的区间数，然后在每个进程对这些区间进行合并或者是拆分为更小的区间</li>
+<li>二是在先让每个进程划分好区间，然后将划分的下标发送给0号进程，再均分给各个进程，进行积分</li>
+<li>三是不规定划分区间个数，而控制划分精度，使用数值计算学过的自适应积分法，利用辛普森公式，在每个进程递归地划分区间，然后进行积分</li>
+</ul>
+</li>
+<li>
+<p>相比较起来，第一种做法显得不那么合理对于分配进程来说，可能有的进程已经处理完了，有的还需要运行很久，第二种做法就显得合理许多，但是实现起来较为的复杂,甚至对于通信函数有的会出现溢出的情况，所以我选择第三种方法进行扩展。</p>
+<p>主要代码如下：</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//调用solve递归求得积分</span>
+local_int = solve(local_L, local_R, simpson(local_L, local_R));
+
+<span class="hljs-function">dl <span class="hljs-title">f</span><span class="hljs-params">(dl x)</span> <span class="hljs-comment">//所求函数</span>
+</span>{
+    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> f(eps);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">exp</span>(b * x) / <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">1</span> - <span class="hljs-built_in">exp</span>(-c * x));
+}
+<span class="hljs-function">dl <span class="hljs-title">simpson</span><span class="hljs-params">(dl l, dl r)</span><span class="hljs-comment">//辛普森公式</span>
+</span>{
+    dl mid = (l + r) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">return</span> (f(l) + <span class="hljs-number">4</span> * f(mid) + f(r)) * (r - l) / <span class="hljs-number">6</span>;
+}
+<span class="hljs-function">dl <span class="hljs-title">solve</span><span class="hljs-params">(dl L, dl R, dl ans)</span><span class="hljs-comment">//递归求积分</span>
+</span>{
+    dl mid = (L + R) / <span class="hljs-number">2</span>, l = simpson(L, mid), r = simpson(mid, R);
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">fabs</span>(l + r - ans) &lt;= eps)<span class="hljs-comment">//若分半后精度够高10^-12则返回</span>
+        <span class="hljs-keyword">return</span> ans;
+    <span class="hljs-keyword">return</span> solve(L, mid, l) + solve(mid, R, r);
+}
+···
+<span class="hljs-comment">//发送结果给0号进程</span>
+MPI_Reduce(&amp;local_int, &amp;total_int, <span class="hljs-number">1</span>, MPI_LONG_DOUBLE, MPI_SUM, <span class="hljs-number">0</span>, MPI_COMM_WORLD);
+</div></code></pre>
+<p>对于老师给的具体函数中，在0的时候是趋于正无穷的，只好在函数的定义中加上判断瑕点，如果为0，则改为求f(eps)，即f(0)约等于f(eps)。</p>
+</li>
+<li>
+<p>尽管如此，在趋于0的区间求积分，积分的数值仍然是十分大的，难以避免地出现溢出的风险。不管是double还是long double都会溢出。</p>
+</li>
+<li>
+<p>另外，在趋于0时，曲线斜率十分的大，如果只限制精度，可能永远都跑不出递归的循环，所以可以在代码中加上，分区次数的限制。<br>
+主要代码如下：</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_SECTION 10000</span>
+
+<span class="hljs-function">dl <span class="hljs-title">solve</span><span class="hljs-params">(dl L, dl R, dl ans)</span>
+</span>{
+    num_section++;
+    dl mid = (L + R) / <span class="hljs-number">2</span>, l = simpson(L, mid), r = simpson(mid, R);
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">fabs</span>(l + r - ans) &lt;= eps || num_section &gt; MAX_SECTION)
+        <span class="hljs-keyword">return</span> ans; <span class="hljs-comment">//超过分块最大数，也返回不再进行划分</span>
+    <span class="hljs-keyword">return</span> solve(L, mid, l) + solve(mid, R, r);
+}
+</div></code></pre>
+</li>
+</ul>
+<h3 id="%E5%AE%8C%E6%88%90%E6%AD%A3%E5%88%99%E9%87%87%E6%A0%B7%E6%8E%92%E5%BA%8Fpsrs%E7%9A%84mpi%E7%AE%97%E6%B3%95"><strong>完成正则采样排序PSRS的MPI算法</strong></h3>
+<ul>
+<li>
+<p>正则采样排序总的分为四个步骤：<br>
+<img src="ex4_1.png" alt="">
+<img src="ex4_2.png" alt="">
+<img src="ex4_3.png" alt="">
+<img src="ex4_4.png" alt=""></p>
+</li>
+<li>
+<p>进一步细分为8个步骤：</p>
+</li>
+</ul>
+<ol>
+<li>均匀划分并使每个进程从文件中读取数据</li>
+</ol>
+<ul>
+<li>将N条数据均匀划分为p段，每个进程处理一段数据。其中i (i=0,1,…,p−1) 号进程处理 ⌊i×N/p⌋到 ⌊(i+1)×N/p-1⌋ 行（行号从0开始计算）</li>
+<li>由于实际数据较大（32G），为了充分并行节省时间，由各进程读取所需要的数据，达到均匀划分效果<br>
+主要代码如下：<pre class="hljs"><code><div><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> L;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLOCK_LOW(my_rank, comm_sz, T) ((my_rank) * (T) / (comm_sz))</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLOCK_HIGH(my_rank, comm_sz, T) (BLOCK_LOW(my_rank + 1, comm_sz, T) - 1)</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLOCK_SIZE(my_rank, comm_sz, T) (BLOCK_HIGH(my_rank, comm_sz, T) - BLOCK_LOW(my_rank, comm_sz, T) + 1)</span>
+
+<span class="hljs-keyword">int</span> power = strtol(argv[<span class="hljs-number">1</span>], <span class="hljs-literal">NULL</span>, <span class="hljs-number">10</span>);
+L dataLength = <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, power); <span class="hljs-comment">//2^power个数</span>
+<span class="hljs-function">ifstream <span class="hljs-title">fin</span><span class="hljs-params">(<span class="hljs-string">"/public/home/shared_dir/psrs_data"</span>, ios::binary)</span></span>;
+
+<span class="hljs-comment">//计算本进程计算数据块大小，以及读取位置</span>
+L myDataStart = BLOCK_LOW(my_rank, comm_sz, dataLength);
+L myDataLength = BLOCK_SIZE(my_rank, comm_sz, dataLength);
+fin.seekg((myDataStart + <span class="hljs-number">1</span>) * <span class="hljs-keyword">sizeof</span>(L), ios::beg);
+
+<span class="hljs-comment">//读取各进程数据</span>
+L *myData = <span class="hljs-keyword">new</span> L[myDataLength];
+<span class="hljs-keyword">for</span> (L i = <span class="hljs-number">0</span>; i &lt; myDataLength; i++)
+    fin.read((<span class="hljs-keyword">char</span> *)&amp;myData[i], <span class="hljs-keyword">sizeof</span>(L));
+fin.close();
+</div></code></pre>
+</li>
+</ul>
+<ol start="2">
+<li>局部排序</li>
+</ol>
+<ul>
+<li>各进程对各自的数据进行排序。</li>
+<li>这里直接使用库函数sort实现。<pre class="hljs"><code><div><span class="hljs-comment">//排序本进程数据</span>
+sort(myData, myData + myDataLength);
+</div></code></pre>
+</li>
+</ul>
+<ol start="3">
+<li>选取regular samples</li>
+</ol>
+<ul>
+<li>p 个进程中，每个进程需要选取出 p 个样本（regular samples），选取规则为 ⌊i×dataLength/p⌋, i=(0,1,…p−1)。dataLength 是进程各自的数据长度。注意此时选取的p个样本也是有序的。
+主要代码如下：<pre class="hljs"><code><div><span class="hljs-comment">//对数据进行等间隔采样即Regular samples，每个进程comm_sz个</span>
+L *regularSamples = <span class="hljs-keyword">new</span> L[comm_sz];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; comm_sz; index++)
+    regularSamples[index] = myData[(index * myDataLength) / comm_sz];
+</div></code></pre>
+</li>
+</ul>
+<ol start="4">
+<li>对选取的样本进行排序</li>
+</ol>
+<ul>
+<li>
+<p>用一个进程对p个进程的共p×p个样本进行排序，此时样本都是局部有序的，使用归并能减少时间复杂度。</p>
+</li>
+<li>
+<p>由0号进程负责样本排序，首先需要 MPI_Gather 操作，将样本收集起来，然后再进行归并。<br>
+gather代码如下：</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//将所有Regular Samples发送给0号进程</span>
+L *gatherRegSam;
+<span class="hljs-keyword">if</span> (my_rank == <span class="hljs-number">0</span>)
+    gatherRegSam = <span class="hljs-keyword">new</span> L[comm_sz * comm_sz];
+<span class="hljs-comment">// 参数分别为sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm</span>
+MPI_Gather(regularSamples, comm_sz, MPI_UNSIGNED_LONG, gatherRegSam, comm_sz, MPI_UNSIGNED_LONG, <span class="hljs-number">0</span>, MPI_COMM_WORLD);
+</div></code></pre>
+<p>归并代码如下：</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//0号进程执行归并排序</span>
+<span class="hljs-keyword">if</span> (my_rank == <span class="hljs-number">0</span>)
+{
+    <span class="hljs-comment">// start用于存储gatherRegSam中各进程RegularSamples开始下标</span>
+    L **start = <span class="hljs-keyword">new</span> L *[comm_sz];
+    <span class="hljs-keyword">int</span> *length = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[comm_sz];
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; comm_sz; i++)
+    {
+        start[i] = &amp;gatherRegSam[i * comm_sz];
+        length[i] = comm_sz;
+    }
+
+    <span class="hljs-comment">//归并</span>
+    L *sortedGatRegSam = <span class="hljs-keyword">new</span> L[comm_sz * comm_sz];
+    merge(start, length, comm_sz, sortedGatRegSam, comm_sz * comm_sz);
+···
+}
+</div></code></pre>
+<p>由于之后还需要使用到归并排序所以考虑直接写一个单独的函数。
+所调用的归并函数如下：</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">data</span>
+{</span>
+    <span class="hljs-keyword">int</span> stindex; <span class="hljs-comment">// 待归并数组序号</span>
+    <span class="hljs-keyword">int</span> index;   <span class="hljs-comment">// 在数组中的序号</span>
+    L stvalue;
+    data(<span class="hljs-keyword">int</span> st = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> id = <span class="hljs-number">0</span>, L stv = <span class="hljs-number">0</span>) : stindex(st), index(id), stvalue(stv) {}
+};
+
+<span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-keyword">const</span> data &amp;One, <span class="hljs-keyword">const</span> data &amp;Two)
+{
+    <span class="hljs-keyword">return</span> One.stvalue &gt; Two.stvalue;
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(L *start[], <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> length[], <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> number, L newArray[], <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> newArrayLength)</span>
+</span>{
+    priority_queue&lt;data&gt; q;
+    <span class="hljs-comment">// 将每个待归并数组的第一个数加入优先队列</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; number; i++)
+        <span class="hljs-keyword">if</span> (length[i] &gt; <span class="hljs-number">0</span>)
+            q.push(data(i, <span class="hljs-number">0</span>, start[i][<span class="hljs-number">0</span>]));
+    <span class="hljs-keyword">int</span> newArrayindex = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (!q.empty() &amp;&amp; (newArrayindex &lt; newArrayLength))
+    {
+        <span class="hljs-comment">// 取最小数据</span>
+        data top_data = q.top();
+        q.pop();
+
+        <span class="hljs-comment">// 将拿下的数据加入到结果数组中</span>
+        newArray[newArrayindex++] = start[top_data.stindex][top_data.index];
+
+        <span class="hljs-comment">// 若取出数据不是最后一个，将下一个元素push进优先队列</span>
+        <span class="hljs-keyword">if</span> (length[top_data.stindex] &gt; (top_data.index + <span class="hljs-number">1</span>))
+        {
+            q.push(data(top_data.stindex, top_data.index + <span class="hljs-number">1</span>, start[top_data.stindex][top_data.index + <span class="hljs-number">1</span>]));
+        }
+    }
+}
+</div></code></pre>
+</li>
+</ul>
+<ol start="5">
+<li>选取主元</li>
+</ol>
+<ul>
+<li>一个进程从排好序的样本中选取 p−1 个主元。选取方法是 i×p, i=1,2,…,p−1。<br>
+主要代码如下：<pre class="hljs"><code><div><span class="hljs-comment">//取出主元</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; comm_sz - <span class="hljs-number">1</span>; i++)
+    privots[i] = sortedGatRegSam[(i + <span class="hljs-number">1</span>) * comm_sz];
+</div></code></pre>
+</li>
+</ul>
+<ol start="6">
+<li>广播主元并划分</li>
+</ol>
+<ul>
+<li>将得到的主元使用MPI_Bcast广播出去</li>
+<li>p 个进程的数据按照 p−1 个主元划分为 p 段。<br>
+主要代码如下：<pre class="hljs"><code><div><span class="hljs-comment">//广播主元</span>
+MPI_Bcast(privots, comm_sz - <span class="hljs-number">1</span>, MPI_UNSIGNED_LONG, <span class="hljs-number">0</span>, MPI_COMM_WORLD);
+
+<span class="hljs-comment">//各进程按主元分段</span>
+<span class="hljs-keyword">int</span> *partStartIndex = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[comm_sz];
+<span class="hljs-keyword">int</span> *partLength = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[comm_sz];
+<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> dataIndex = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> partIndex = <span class="hljs-number">0</span>; partIndex &lt; comm_sz - <span class="hljs-number">1</span>; partIndex++)
+{
+    partStartIndex[partIndex] = dataIndex;
+    partLength[partIndex] = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">while</span> ((dataIndex &lt; myDataLength) &amp;&amp; (myData[dataIndex] &lt;= privots[partIndex]))
+    {
+        dataIndex++;
+        partLength[partIndex]++;
+    }
+}
+partStartIndex[comm_sz - <span class="hljs-number">1</span>] = dataIndex;
+partLength[comm_sz - <span class="hljs-number">1</span>] = myDataLength - dataIndex;
+</div></code></pre>
+</li>
+</ul>
+<ol start="7">
+<li>全互换</li>
+</ol>
+<ul>
+<li>进程 i (i=0,1,…p−1)将第 j (j=0,1,…,p−1) 段发送给进程 j 。也就是每个进程都要给其它所有进程发送数据段，并且还要从其它所有进程中接收数据段。</li>
+<li>使用 MPI_Alltoall 和 MPI_Alltoallv 简化操作，进程 i 先使用 MPI_Alltoall 将第 j 段数据的长度发送给进程 j（或者说进程 j 使用 MPI_Alltoall 接收进程 i 的第 j 段数据的长度），进程 j 将这个长度保存在 recvRankPartLen[i] 中，进程 j 知道长度后便可以使用 MPI_Alltoallv 接收进程 i 的第 j 段数据了。<br>
+主要代码如下：<pre class="hljs"><code><div><span class="hljs-comment">//全互换(ALLTOALL)</span>
+<span class="hljs-keyword">int</span> *recvRankPartLen = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[comm_sz];
+MPI_Alltoall(partLength, <span class="hljs-number">1</span>, MPI_INT, recvRankPartLen, <span class="hljs-number">1</span>, MPI_INT, MPI_COMM_WORLD);
+
+<span class="hljs-comment">//ALLTOALLV</span>
+<span class="hljs-keyword">int</span> rankPartLenSum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> *rankPartStart = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[comm_sz];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; comm_sz; i++)
+{
+    rankPartStart[i] = rankPartLenSum;
+    rankPartLenSum += recvRankPartLen[i];
+}
+<span class="hljs-comment">// 接收各进程i段的数组</span>
+L *recvPartData = <span class="hljs-keyword">new</span> L[rankPartLenSum];
+MPI_Alltoallv(myData, partLength, partStartIndex, MPI_UNSIGNED_LONG, recvPartData, recvRankPartLen, rankPartStart, MPI_UNSIGNED_LONG, MPI_COMM_WORLD);
+</div></code></pre>
+</li>
+<li>值得注意的是，MPI_Alltoallv中的sendcounts, sdispls, recvcounts, rdispls都是 const int *类型，不能是 unsigned long * 类型。所以数据发送的长度不能超过2^31-1,因此在进程数 p=2 和总数据量为 2^32 的情况下运行一定会出现错误（因为分成的两段数据一定有一段要超过 2^31 −1)。</li>
+</ul>
+<ol start="8">
+<li>归并排序</li>
+</ol>
+<ul>
+<li>各处理器对接收到的 p 个数据段进行归并，因为 p 个数据段已经是局部有序的。</li>
+<li>调用之前实现的merge函数即可。<pre class="hljs"><code><div><span class="hljs-comment">// 归并</span>
+L **mulPartStart = <span class="hljs-keyword">new</span> L *[comm_sz];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; comm_sz; i++)
+    mulPartStart[i] = &amp;recvPartData[rankPartStart[i]];
+
+<span class="hljs-comment">// 结果</span>
+L *sortedRes = <span class="hljs-keyword">new</span> L[rankPartLenSum];
+merge(mulPartStart, recvRankPartLen, comm_sz, sortedRes, rankPartLenSum);
+</div></code></pre>
+</li>
+<li>此外，还需要计算时间，以及验证排序的准确性。</li>
+</ul>
+<ol start="9">
+<li>计算MPI运行时间</li>
+</ol>
+<ul>
+<li>使用MPI_Barrier以及MPI_Wtime计算<pre class="hljs"><code><div><span class="hljs-comment">//记录时间</span>
+<span class="hljs-keyword">double</span> startTime, endTime;
+MPI_Barrier(MPI_COMM_WORLD);
+startTime = MPI_Wtime();
+···
+MPI_Barrier(MPI_COMM_WORLD);
+endTime = MPI_Wtime();
+</div></code></pre>
+</li>
+</ul>
+<ol start="10">
+<li>验证排序的正确性<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(L res[], <span class="hljs-keyword">int</span> len)</span>
+</span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len - <span class="hljs-number">1</span>; i++)
+        <span class="hljs-keyword">if</span> (!(res[i] &lt;= res[i + <span class="hljs-number">1</span>]))
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}
+<span class="hljs-comment">//判断是否已经有序</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Rank "</span> &lt;&lt; my_rank &lt;&lt; <span class="hljs-string">" sort: "</span> &lt;&lt; check(sortedRes, rankPartLenSum) &lt;&lt; <span class="hljs-built_in">endl</span>;
+</div></code></pre>
+</li>
+</ol>
+<h2 id="%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><strong>实验过程</strong></h2>
+<hr>
+<ol>
+<li>在本机中vscode，C++环境中编写好代码。</li>
+</ol>
+<ul>
+<li>编译时使用命令
+<blockquote>
+<p>source /public/software/profile.d/mpi_openmpi-intel-2.1.2.sh
+mpic++ -g gzy_ex4.cpp -o gzy_ex4</p>
+</blockquote>
+</li>
+</ul>
+<ol start="2">
+<li>利用winscp上传至集群中</li>
+<li>打开putty命令行界面，编写test.pbs,使用qsub等命令将作业提交给PBS服务器，进行运行，在自己的文件夹中查看结果，并记录。<br>
+具体操作见下图：</li>
+</ol>
+<ul>
+<li>使用qsub提交作业给服务器<br>
+<img src="2.png" alt=""></li>
+<li>使用qstat查看状态<br>
+<img src="3.png" alt=""></li>
+<li>关于编写test.pbs脚本的问题,由于对于每个进程数要进行不同规模的实验，所以我直接在一个pbs脚本中执行多条命令。<br>
+下图为12个进程的排序实验pbs脚本：<br>
+<img src="ex_5.png" alt=""></li>
+<li>得到许多输出文件<br>
+<img src="ex_9.png" alt=""></li>
+<li>打开文件夹中的输出文件并记录数据，填写表格。<br>
+要得到可靠的数据只需要qsub多次求平均和即可，图中给出其中一例：<br>
+<img src="ex_6.png" alt=""></li>
+</ul>
+<h2 id="%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C%E5%8F%8A%E6%89%80%E5%BE%97%E7%BB%93%E8%AE%BA"><strong>实验结果及所得结论</strong></h2>
+<hr>
+<ul>
+<li>
+<p>测试梯形积分法正确性
+在集群上运行梯形积分代码，随机给出一个梯形，输出积分。
+即运行trap-1，trap-2代码，图中测试一个上为2，下为5，高为4的梯形。<br>
+运行结果如下：<br>
+<img src="ex_8.png" alt=""><br>
+验证积分为(2+5)*4/2=14正确。</p>
+<ul>
+<li>下面的测试则将之前代码的梯形函数替换成老师给的带瑕点的函数即可。</li>
+</ul>
+</li>
+<li>
+<p>通过使用不同的方法求瑕积分，以及多次运行求平均运行时间得到采用梯形积分法和自适应积分法在不同进程数下的执行时间以及加速比和效率。</p>
+</li>
+<li>
+<p>列出给出不同方法求积分的时间，加速比和效率</p>
+<ul>
+<li>
+<p>为计算简便，统一保留五位小数。</p>
+</li>
+<li>
+<p>此处令该函数 <code>b=1 c=2</code></p>
+</li>
+<li>
+<p>梯形求瑕积分法(p为进程数，n为区间数)</p>
+<ul>
+<li>采用点对点通信函数</li>
+<li>时间(单位：s)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1e5</td>
+<td style="text-align:center">0.00987</td>
+<td style="text-align:center">0.00795</td>
+<td style="text-align:center">0.00401</td>
+<td style="text-align:center">0.00171</td>
+<td style="text-align:center">0.00104</td>
+<td style="text-align:center">0.00068</td>
+<td style="text-align:center">0.02802</td>
+<td style="text-align:center">0.02631</td>
+<td style="text-align:center">0.02956</td>
+<td style="text-align:center">0.16472</td>
+</tr>
+<tr>
+<td style="text-align:center">1e6</td>
+<td style="text-align:center">0.10329</td>
+<td style="text-align:center">0.06566</td>
+<td style="text-align:center">0.07828</td>
+<td style="text-align:center">0.01896</td>
+<td style="text-align:center">0.01688</td>
+<td style="text-align:center">0.00625</td>
+<td style="text-align:center">0.03091</td>
+<td style="text-align:center">0.03117</td>
+<td style="text-align:center">0.03092</td>
+<td style="text-align:center">0.15755</td>
+</tr>
+<tr>
+<td style="text-align:center">1e7</td>
+<td style="text-align:center">0.77722</td>
+<td style="text-align:center">0.47133</td>
+<td style="text-align:center">1.26377</td>
+<td style="text-align:center">0.13342</td>
+<td style="text-align:center">0.11715</td>
+<td style="text-align:center">0.058561</td>
+<td style="text-align:center">0.04578</td>
+<td style="text-align:center">0.03751</td>
+<td style="text-align:center">0.03424</td>
+<td style="text-align:center">0.02724</td>
+</tr>
+<tr>
+<td style="text-align:center">1e8</td>
+<td style="text-align:center">6.70629</td>
+<td style="text-align:center">3.35805</td>
+<td style="text-align:center">1.93492</td>
+<td style="text-align:center">1.03475</td>
+<td style="text-align:center">0.55037</td>
+<td style="text-align:center">1.35712</td>
+<td style="text-align:center">1.20548</td>
+<td style="text-align:center">0.11513</td>
+<td style="text-align:center">0.06445</td>
+<td style="text-align:center">0.04571</td>
+</tr>
+<tr>
+<td style="text-align:center">1e9</td>
+<td style="text-align:center">56.1608</td>
+<td style="text-align:center">28.7594</td>
+<td style="text-align:center">15.0298</td>
+<td style="text-align:center">7.60309</td>
+<td style="text-align:center">4.24326</td>
+<td style="text-align:center">2.35722</td>
+<td style="text-align:center">1.36813</td>
+<td style="text-align:center">0.70203</td>
+<td style="text-align:center">0.33714</td>
+<td style="text-align:center">0.21874</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>加速比</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1e5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.99457</td>
+<td style="text-align:center">2.47215</td>
+<td style="text-align:center">5.80486</td>
+<td style="text-align:center">9.48137</td>
+<td style="text-align:center">14.50881</td>
+<td style="text-align:center">0.35251</td>
+<td style="text-align:center">0.37565</td>
+<td style="text-align:center">0.33409</td>
+<td style="text-align:center">0.06153</td>
+</tr>
+<tr>
+<td style="text-align:center">1e6</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.90017</td>
+<td style="text-align:center">2.6981</td>
+<td style="text-align:center">5.44901</td>
+<td style="text-align:center">6.11832</td>
+<td style="text-align:center">16.53691</td>
+<td style="text-align:center">3.33972</td>
+<td style="text-align:center">3.31381</td>
+<td style="text-align:center">3.34019</td>
+<td style="text-align:center">5.65277</td>
+</tr>
+<tr>
+<td style="text-align:center">1e7</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.83202</td>
+<td style="text-align:center">2.94659</td>
+<td style="text-align:center">5.82515</td>
+<td style="text-align:center">6.63124</td>
+<td style="text-align:center">13.27141</td>
+<td style="text-align:center">16.9778</td>
+<td style="text-align:center">20.7161</td>
+<td style="text-align:center">22.6979</td>
+<td style="text-align:center">26.6666</td>
+</tr>
+<tr>
+<td style="text-align:center">1e8</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.91708</td>
+<td style="text-align:center">3.465931</td>
+<td style="text-align:center">6.48107</td>
+<td style="text-align:center">12.18520</td>
+<td style="text-align:center">18.78168</td>
+<td style="text-align:center">32.6372</td>
+<td style="text-align:center">58.2487</td>
+<td style="text-align:center">104.049</td>
+<td style="text-align:center">136.171</td>
+</tr>
+<tr>
+<td style="text-align:center">1e9</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.85278</td>
+<td style="text-align:center">3.73663</td>
+<td style="text-align:center">7.38658</td>
+<td style="text-align:center">13.23531</td>
+<td style="text-align:center">23.8241</td>
+<td style="text-align:center">41.0493</td>
+<td style="text-align:center">79.9982</td>
+<td style="text-align:center">166.576</td>
+<td style="text-align:center">257.098</td>
+</tr>
+</tbody>
+</table>
+<p>-效率</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1e5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.62123</td>
+<td style="text-align:center">0.61803</td>
+<td style="text-align:center">0.72561</td>
+<td style="text-align:center">0.59270</td>
+<td style="text-align:center">0.45340</td>
+<td style="text-align:center">0.00551</td>
+<td style="text-align:center">0.00293</td>
+<td style="text-align:center">0.00131</td>
+<td style="text-align:center">0.00012</td>
+</tr>
+<tr>
+<td style="text-align:center">1e6</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.78653</td>
+<td style="text-align:center">0.67453</td>
+<td style="text-align:center">0.68113</td>
+<td style="text-align:center">0.38241</td>
+<td style="text-align:center">0.51687</td>
+<td style="text-align:center">0.05218</td>
+<td style="text-align:center">0.02589</td>
+<td style="text-align:center">0.01304</td>
+<td style="text-align:center">0.00127</td>
+</tr>
+<tr>
+<td style="text-align:center">1e7</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.82451</td>
+<td style="text-align:center">0.73664</td>
+<td style="text-align:center">0.72814</td>
+<td style="text-align:center">0.41466</td>
+<td style="text-align:center">0.41473</td>
+<td style="text-align:center">0.26528</td>
+<td style="text-align:center">0.16184</td>
+<td style="text-align:center">0.08866</td>
+<td style="text-align:center">0.05208</td>
+</tr>
+<tr>
+<td style="text-align:center">1e8</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.99854</td>
+<td style="text-align:center">0.86648</td>
+<td style="text-align:center">0.81013</td>
+<td style="text-align:center">0.76157</td>
+<td style="text-align:center">0.58709</td>
+<td style="text-align:center">0.50996</td>
+<td style="text-align:center">0.45509</td>
+<td style="text-align:center">0.40644</td>
+<td style="text-align:center">0.26594</td>
+</tr>
+<tr>
+<td style="text-align:center">1e9</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.97639</td>
+<td style="text-align:center">0.93416</td>
+<td style="text-align:center">0.92332</td>
+<td style="text-align:center">0.82721</td>
+<td style="text-align:center">0.74453</td>
+<td style="text-align:center">0.641396</td>
+<td style="text-align:center">0.62498</td>
+<td style="text-align:center">0.65069</td>
+<td style="text-align:center">0.50211</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>采用集合通信函数</li>
+<li>时间(单位：s)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1e5</td>
+<td style="text-align:center">0.01427</td>
+<td style="text-align:center">0.00720</td>
+<td style="text-align:center">0.00286</td>
+<td style="text-align:center">0.00205</td>
+<td style="text-align:center">0.00119</td>
+<td style="text-align:center">0.00085</td>
+<td style="text-align:center">0.02499</td>
+<td style="text-align:center">0.02631</td>
+<td style="text-align:center">0.02756</td>
+<td style="text-align:center">0.16052</td>
+</tr>
+<tr>
+<td style="text-align:center">1e6</td>
+<td style="text-align:center">0.12208</td>
+<td style="text-align:center">0.06736</td>
+<td style="text-align:center">0.03875</td>
+<td style="text-align:center">0.01968</td>
+<td style="text-align:center">0.01099</td>
+<td style="text-align:center">0.00636</td>
+<td style="text-align:center">0.03091</td>
+<td style="text-align:center">0.03051</td>
+<td style="text-align:center">0.02992</td>
+<td style="text-align:center">0.15823</td>
+</tr>
+<tr>
+<td style="text-align:center">1e7</td>
+<td style="text-align:center">0.78147</td>
+<td style="text-align:center">0.41677</td>
+<td style="text-align:center">0.19625</td>
+<td style="text-align:center">0.14945</td>
+<td style="text-align:center">0.08089</td>
+<td style="text-align:center">0.05723</td>
+<td style="text-align:center">0.04578</td>
+<td style="text-align:center">0.04363</td>
+<td style="text-align:center">0.03624</td>
+<td style="text-align:center">0.02914</td>
+</tr>
+<tr>
+<td style="text-align:center">1e8</td>
+<td style="text-align:center">6.0994</td>
+<td style="text-align:center">3.31550</td>
+<td style="text-align:center">1.94642</td>
+<td style="text-align:center">1.49288</td>
+<td style="text-align:center">0.55037</td>
+<td style="text-align:center">0.323587</td>
+<td style="text-align:center">1.20548</td>
+<td style="text-align:center">0.22991</td>
+<td style="text-align:center">0.11445</td>
+<td style="text-align:center">0.04925</td>
+</tr>
+<tr>
+<td style="text-align:center">1e9</td>
+<td style="text-align:center">56.7137</td>
+<td style="text-align:center">28.9901</td>
+<td style="text-align:center">15.03917</td>
+<td style="text-align:center">7.89026</td>
+<td style="text-align:center">3.91178</td>
+<td style="text-align:center">2.39161</td>
+<td style="text-align:center">1.36813</td>
+<td style="text-align:center">1.38913</td>
+<td style="text-align:center">0.64714</td>
+<td style="text-align:center">0.21844</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>加速比</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1e5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.84147</td>
+<td style="text-align:center">3.46115</td>
+<td style="text-align:center">5.84486</td>
+<td style="text-align:center">9.48137</td>
+<td style="text-align:center">14.50881</td>
+<td style="text-align:center">0.51251</td>
+<td style="text-align:center">0.37545</td>
+<td style="text-align:center">0.35649</td>
+<td style="text-align:center">0.35683</td>
+</tr>
+<tr>
+<td style="text-align:center">1e6</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.87017</td>
+<td style="text-align:center">3.6981</td>
+<td style="text-align:center">5.44901</td>
+<td style="text-align:center">10.11832</td>
+<td style="text-align:center">16.53691</td>
+<td style="text-align:center">10.33972</td>
+<td style="text-align:center">3.31381</td>
+<td style="text-align:center">3.34019</td>
+<td style="text-align:center">5.65277</td>
+</tr>
+<tr>
+<td style="text-align:center">1e7</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.84202</td>
+<td style="text-align:center">3.94659</td>
+<td style="text-align:center">6.82875</td>
+<td style="text-align:center">11.63124</td>
+<td style="text-align:center">13.27141</td>
+<td style="text-align:center">16.25778</td>
+<td style="text-align:center">20.7161</td>
+<td style="text-align:center">22.6979</td>
+<td style="text-align:center">26.6666</td>
+</tr>
+<tr>
+<td style="text-align:center">1e8</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.99708</td>
+<td style="text-align:center">4.46531</td>
+<td style="text-align:center">6.35987</td>
+<td style="text-align:center">12.18520</td>
+<td style="text-align:center">18.78168</td>
+<td style="text-align:center">32.6372</td>
+<td style="text-align:center">58.2487</td>
+<td style="text-align:center">104.049</td>
+<td style="text-align:center">136.171</td>
+</tr>
+<tr>
+<td style="text-align:center">1e9</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.95278</td>
+<td style="text-align:center">4.73663</td>
+<td style="text-align:center">7.38658</td>
+<td style="text-align:center">13.23531</td>
+<td style="text-align:center">23.8241</td>
+<td style="text-align:center">42.0493</td>
+<td style="text-align:center">79.9982</td>
+<td style="text-align:center">166.576</td>
+<td style="text-align:center">257.098</td>
+</tr>
+</tbody>
+</table>
+<p>-效率</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1e5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.99123</td>
+<td style="text-align:center">0.75803</td>
+<td style="text-align:center">0.73581</td>
+<td style="text-align:center">0.69270</td>
+<td style="text-align:center">0.55340</td>
+<td style="text-align:center">0.00551</td>
+<td style="text-align:center">0.00293</td>
+<td style="text-align:center">0.00211</td>
+<td style="text-align:center">0.00011</td>
+</tr>
+<tr>
+<td style="text-align:center">1e6</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.98653</td>
+<td style="text-align:center">0.68853</td>
+<td style="text-align:center">0.68113</td>
+<td style="text-align:center">0.38241</td>
+<td style="text-align:center">0.51687</td>
+<td style="text-align:center">0.04358</td>
+<td style="text-align:center">0.02589</td>
+<td style="text-align:center">0.01424</td>
+<td style="text-align:center">0.00777</td>
+</tr>
+<tr>
+<td style="text-align:center">1e7</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.92451</td>
+<td style="text-align:center">0.74578</td>
+<td style="text-align:center">0.756414</td>
+<td style="text-align:center">0.41466</td>
+<td style="text-align:center">0.5473</td>
+<td style="text-align:center">0.26528</td>
+<td style="text-align:center">0.16184</td>
+<td style="text-align:center">0.08866</td>
+<td style="text-align:center">0.05428</td>
+</tr>
+<tr>
+<td style="text-align:center">1e8</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.99854</td>
+<td style="text-align:center">0.86648</td>
+<td style="text-align:center">0.81013</td>
+<td style="text-align:center">0.76157</td>
+<td style="text-align:center">0.58709</td>
+<td style="text-align:center">0.50996</td>
+<td style="text-align:center">0.45509</td>
+<td style="text-align:center">0.40644</td>
+<td style="text-align:center">0.25494</td>
+</tr>
+<tr>
+<td style="text-align:center">1e9</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.97639</td>
+<td style="text-align:center">0.93416</td>
+<td style="text-align:center">0.92332</td>
+<td style="text-align:center">0.82721</td>
+<td style="text-align:center">0.74453</td>
+<td style="text-align:center">0.641396</td>
+<td style="text-align:center">0.62498</td>
+<td style="text-align:center">0.65069</td>
+<td style="text-align:center">0.56211</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>自适应区间求瑕积分法</p>
+<ul>
+<li>由于n数不确定，所以列变量改为L区间长度(0,L)</li>
+<li>时间</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">L\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">0.00361</td>
+<td style="text-align:center">0.00426</td>
+<td style="text-align:center">0.00172</td>
+<td style="text-align:center">0.00085</td>
+<td style="text-align:center">0.00069</td>
+<td style="text-align:center">0.00044</td>
+<td style="text-align:center">0.02573</td>
+<td style="text-align:center">0.02585</td>
+<td style="text-align:center">0.03075</td>
+<td style="text-align:center">0.03466</td>
+</tr>
+<tr>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">628.982</td>
+<td style="text-align:center">315.69621</td>
+<td style="text-align:center">158.722</td>
+<td style="text-align:center">79.6353</td>
+<td style="text-align:center">40.3837</td>
+<td style="text-align:center">21.0089</td>
+<td style="text-align:center">10.4754</td>
+<td style="text-align:center">5.61995</td>
+<td style="text-align:center">2.97983</td>
+<td style="text-align:center">1.65514</td>
+</tr>
+<tr>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">1341.52</td>
+<td style="text-align:center">673.93842</td>
+<td style="text-align:center">339.976</td>
+<td style="text-align:center">170.2301</td>
+<td style="text-align:center">86.1511</td>
+<td style="text-align:center">43.2805</td>
+<td style="text-align:center">21.9278</td>
+<td style="text-align:center">11.227</td>
+<td style="text-align:center">5.71526</td>
+<td style="text-align:center">3.17949</td>
+</tr>
+<tr>
+<td style="text-align:center">8000</td>
+<td style="text-align:center">1472.98</td>
+<td style="text-align:center">824.566</td>
+<td style="text-align:center">412.746</td>
+<td style="text-align:center">237.732</td>
+<td style="text-align:center">105.414</td>
+<td style="text-align:center">52.596</td>
+<td style="text-align:center">26.4849</td>
+<td style="text-align:center">13.5098</td>
+<td style="text-align:center">6.95233</td>
+<td style="text-align:center">4.09975</td>
+</tr>
+<tr>
+<td style="text-align:center">16000</td>
+<td style="text-align:center">1800.51</td>
+<td style="text-align:center">904.062</td>
+<td style="text-align:center">455.755</td>
+<td style="text-align:center">218.943</td>
+<td style="text-align:center">114.117</td>
+<td style="text-align:center">57.7479</td>
+<td style="text-align:center">29.0586</td>
+<td style="text-align:center">15.8273</td>
+<td style="text-align:center">8.1492</td>
+<td style="text-align:center">4.18815</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>加速比</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">L\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2.02751</td>
+<td style="text-align:center">3.84879</td>
+<td style="text-align:center">6.97956</td>
+<td style="text-align:center">9.53518</td>
+<td style="text-align:center">14.7838</td>
+<td style="text-align:center">0.25702</td>
+<td style="text-align:center">0.25575</td>
+<td style="text-align:center">0.21502</td>
+<td style="text-align:center">0.19071</td>
+</tr>
+<tr>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.99237</td>
+<td style="text-align:center">3.95279</td>
+<td style="text-align:center">7.89828</td>
+<td style="text-align:center">15.5751</td>
+<td style="text-align:center">29.9388</td>
+<td style="text-align:center">60.04317</td>
+<td style="text-align:center">101.92142</td>
+<td style="text-align:center">211.08</td>
+<td style="text-align:center">380.017</td>
+</tr>
+<tr>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.99057</td>
+<td style="text-align:center">3.94593</td>
+<td style="text-align:center">7.88063</td>
+<td style="text-align:center">15.5717</td>
+<td style="text-align:center">30.9959</td>
+<td style="text-align:center">61.17901</td>
+<td style="text-align:center">119.49121</td>
+<td style="text-align:center">224.726</td>
+<td style="text-align:center">421.929</td>
+</tr>
+<tr>
+<td style="text-align:center">8000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.98041</td>
+<td style="text-align:center">3.94638</td>
+<td style="text-align:center">6.86901</td>
+<td style="text-align:center">15.4911</td>
+<td style="text-align:center">31.0476</td>
+<td style="text-align:center">61.65714</td>
+<td style="text-align:center">120.874</td>
+<td style="text-align:center">234.881</td>
+<td style="text-align:center">398.312</td>
+</tr>
+<tr>
+<td style="text-align:center">16000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.99158</td>
+<td style="text-align:center">3.95061</td>
+<td style="text-align:center">7.86412</td>
+<td style="text-align:center">15.7778</td>
+<td style="text-align:center">31.1788</td>
+<td style="text-align:center">61.96131</td>
+<td style="text-align:center">113.76</td>
+<td style="text-align:center">220.943</td>
+<td style="text-align:center">419.906</td>
+</tr>
+</tbody>
+</table>
+<p>-效率</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">L\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.01375</td>
+<td style="text-align:center">0.96219</td>
+<td style="text-align:center">0.87369</td>
+<td style="text-align:center">0.69595</td>
+<td style="text-align:center">0.46199</td>
+<td style="text-align:center">0.00421</td>
+<td style="text-align:center">0.00201</td>
+<td style="text-align:center">0.00084</td>
+<td style="text-align:center">0.00037</td>
+</tr>
+<tr>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.99618</td>
+<td style="text-align:center">0.99069</td>
+<td style="text-align:center">0.98728</td>
+<td style="text-align:center">0.97344</td>
+<td style="text-align:center">0.93558</td>
+<td style="text-align:center">0.93818</td>
+<td style="text-align:center">0.87437</td>
+<td style="text-align:center">0.82453</td>
+<td style="text-align:center">0.74222</td>
+</tr>
+<tr>
+<td style="text-align:center">4000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.99528</td>
+<td style="text-align:center">0.98648</td>
+<td style="text-align:center">0.98507</td>
+<td style="text-align:center">0.97323</td>
+<td style="text-align:center">0.96862</td>
+<td style="text-align:center">0.95592</td>
+<td style="text-align:center">0.93352</td>
+<td style="text-align:center">0.91689</td>
+<td style="text-align:center">0.82408</td>
+</tr>
+<tr>
+<td style="text-align:center">8000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.99021</td>
+<td style="text-align:center">0.98909</td>
+<td style="text-align:center">0.85862</td>
+<td style="text-align:center">0.96819</td>
+<td style="text-align:center">0.97023</td>
+<td style="text-align:center">0.96339</td>
+<td style="text-align:center">0.94433</td>
+<td style="text-align:center">0.91751</td>
+<td style="text-align:center">0.77795</td>
+</tr>
+<tr>
+<td style="text-align:center">1600</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.99579</td>
+<td style="text-align:center">0.98765</td>
+<td style="text-align:center">0.98301</td>
+<td style="text-align:center">0.98611</td>
+<td style="text-align:center">0.97433</td>
+<td style="text-align:center">0.96814</td>
+<td style="text-align:center">0.88875</td>
+<td style="text-align:center">0.86341</td>
+<td style="text-align:center">0.83966</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>通过对PSRS排序的多次运行，以及求平均运行时间，列出时间，加速比和效率，如下：</p>
+<ul>
+<li>有的n，p存在运行不了的情况，前面已解释了原因，此处用串行数据代替，毕竟一个进程应该和串行差不太多。除去单个进程也存在两个进程时运行不了的情况，此处用X标记。</li>
+<li>时间</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">0.00160</td>
+<td style="text-align:center">0.00352</td>
+<td style="text-align:center">0.00135</td>
+<td style="text-align:center">0.00143</td>
+<td style="text-align:center">0.00151</td>
+<td style="text-align:center">0.00421</td>
+<td style="text-align:center">0.68127</td>
+<td style="text-align:center">1.03597</td>
+<td style="text-align:center">0.95697</td>
+<td style="text-align:center">1.00291</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">0.00527</td>
+<td style="text-align:center">0.01065</td>
+<td style="text-align:center">0.00629</td>
+<td style="text-align:center">0.00331</td>
+<td style="text-align:center">0.00344</td>
+<td style="text-align:center">0.00355</td>
+<td style="text-align:center">0.69950</td>
+<td style="text-align:center">1.77570</td>
+<td style="text-align:center">2.23623</td>
+<td style="text-align:center">1.99840</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">0.07187</td>
+<td style="text-align:center">0.16030</td>
+<td style="text-align:center">0.10520</td>
+<td style="text-align:center">0.06061</td>
+<td style="text-align:center">0.03074</td>
+<td style="text-align:center">0.02067</td>
+<td style="text-align:center">0.66733</td>
+<td style="text-align:center">1.81938</td>
+<td style="text-align:center">4.45618</td>
+<td style="text-align:center">9.01119</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center">1.08838</td>
+<td style="text-align:center">1.97634</td>
+<td style="text-align:center">1.01482</td>
+<td style="text-align:center">0.59784</td>
+<td style="text-align:center">0.37223</td>
+<td style="text-align:center">0.20264</td>
+<td style="text-align:center">0.76625</td>
+<td style="text-align:center">1.88111</td>
+<td style="text-align:center">4.24018</td>
+<td style="text-align:center">9.13574</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td style="text-align:center">18.2348</td>
+<td style="text-align:center">25.43020</td>
+<td style="text-align:center">14.16880</td>
+<td style="text-align:center">8.30737</td>
+<td style="text-align:center">4.34764</td>
+<td style="text-align:center">2.35469</td>
+<td style="text-align:center">2.03540</td>
+<td style="text-align:center">2.54437</td>
+<td style="text-align:center">4.51008</td>
+<td style="text-align:center">9.27673</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">334.808</td>
+<td style="text-align:center">432.77400</td>
+<td style="text-align:center">237.26100</td>
+<td style="text-align:center">128.56600</td>
+<td style="text-align:center">68.61070</td>
+<td style="text-align:center">35.56160</td>
+<td style="text-align:center">19.48390</td>
+<td style="text-align:center">12.28040</td>
+<td style="text-align:center">9.41573</td>
+<td style="text-align:center">12.24180</td>
+</tr>
+<tr>
+<td style="text-align:center">31</td>
+<td style="text-align:center">692.25</td>
+<td style="text-align:center">967.18400</td>
+<td style="text-align:center">493.79700</td>
+<td style="text-align:center">267.11700</td>
+<td style="text-align:center">137.94400</td>
+<td style="text-align:center">71.54530</td>
+<td style="text-align:center">38.04640</td>
+<td style="text-align:center">21.60590</td>
+<td style="text-align:center">14.82660</td>
+<td style="text-align:center">14.63760</td>
+</tr>
+<tr>
+<td style="text-align:center">32</td>
+<td style="text-align:center">1436.14</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">963.60000</td>
+<td style="text-align:center">533.89400</td>
+<td style="text-align:center">304.82500</td>
+<td style="text-align:center">144.62800</td>
+<td style="text-align:center">76.42060</td>
+<td style="text-align:center">41.66870</td>
+<td style="text-align:center">25.09660</td>
+<td style="text-align:center">19.76440</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>加速比</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.45510</td>
+<td style="text-align:center">1.18149</td>
+<td style="text-align:center">1.11839</td>
+<td style="text-align:center">1.06093</td>
+<td style="text-align:center">0.38037</td>
+<td style="text-align:center">0.00235</td>
+<td style="text-align:center">0.00155</td>
+<td style="text-align:center">0.00167</td>
+<td style="text-align:center">1.00291</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.49555</td>
+<td style="text-align:center">0.838801</td>
+<td style="text-align:center">1.59235</td>
+<td style="text-align:center">1.53443</td>
+<td style="text-align:center">1.48574</td>
+<td style="text-align:center">0.00754</td>
+<td style="text-align:center">0.00297</td>
+<td style="text-align:center">0.00236</td>
+<td style="text-align:center">1.99840</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.44841</td>
+<td style="text-align:center">0.68324</td>
+<td style="text-align:center">1.18593</td>
+<td style="text-align:center">2.33805</td>
+<td style="text-align:center">3.47696</td>
+<td style="text-align:center">0.10771</td>
+<td style="text-align:center">0.03951</td>
+<td style="text-align:center">0.01613</td>
+<td style="text-align:center">9.01119</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.55070</td>
+<td style="text-align:center">1.07249</td>
+<td style="text-align:center">1.82051</td>
+<td style="text-align:center">2.92393</td>
+<td style="text-align:center">5.37090</td>
+<td style="text-align:center">1.42040</td>
+<td style="text-align:center">0.57858</td>
+<td style="text-align:center">0.25668</td>
+<td style="text-align:center">9.13574</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.71705</td>
+<td style="text-align:center">1.28697</td>
+<td style="text-align:center">2.19501</td>
+<td style="text-align:center">4.19418</td>
+<td style="text-align:center">7.74403</td>
+<td style="text-align:center">8.95883</td>
+<td style="text-align:center">7.16672</td>
+<td style="text-align:center">4.04312</td>
+<td style="text-align:center">9.27673</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.77363</td>
+<td style="text-align:center">1.41114</td>
+<td style="text-align:center">2.60417</td>
+<td style="text-align:center">4.87982</td>
+<td style="text-align:center">9.41487</td>
+<td style="text-align:center">17.18383</td>
+<td style="text-align:center">27.26361</td>
+<td style="text-align:center">35.55837</td>
+<td style="text-align:center">12.24180</td>
+</tr>
+<tr>
+<td style="text-align:center">31</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.71574</td>
+<td style="text-align:center">1.40189</td>
+<td style="text-align:center">2.59156</td>
+<td style="text-align:center">5.01834</td>
+<td style="text-align:center">9.67569</td>
+<td style="text-align:center">18.19489</td>
+<td style="text-align:center">32.03986</td>
+<td style="text-align:center">46.68973</td>
+<td style="text-align:center">14.63760</td>
+</tr>
+<tr>
+<td style="text-align:center">32</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">1.49039</td>
+<td style="text-align:center">2.68993</td>
+<td style="text-align:center">4.71136</td>
+<td style="text-align:center">9.92989</td>
+<td style="text-align:center">18.79258</td>
+<td style="text-align:center">34.46568</td>
+<td style="text-align:center">57.22448</td>
+<td style="text-align:center">19.76440</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>效率</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n\p</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">32</th>
+<th style="text-align:center">64</th>
+<th style="text-align:center">128</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.22755</td>
+<td style="text-align:center">0.29537</td>
+<td style="text-align:center">0.13980</td>
+<td style="text-align:center">0.06631</td>
+<td style="text-align:center">0.01189</td>
+<td style="text-align:center">0.00004</td>
+<td style="text-align:center">0.00001</td>
+<td style="text-align:center">0.00001</td>
+<td style="text-align:center">0.00001</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.24777</td>
+<td style="text-align:center">0.20970</td>
+<td style="text-align:center">0.19904</td>
+<td style="text-align:center">0.09590</td>
+<td style="text-align:center">0.04643</td>
+<td style="text-align:center">0.00012</td>
+<td style="text-align:center">0.00002</td>
+<td style="text-align:center">0.00001</td>
+<td style="text-align:center">0.00001</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.22420</td>
+<td style="text-align:center">0.17081</td>
+<td style="text-align:center">0.14824</td>
+<td style="text-align:center">0.14613</td>
+<td style="text-align:center">0.10866</td>
+<td style="text-align:center">0.00168</td>
+<td style="text-align:center">0.00031</td>
+<td style="text-align:center">0.00006</td>
+<td style="text-align:center">0.00002</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.27535</td>
+<td style="text-align:center">0.26812</td>
+<td style="text-align:center">0.22756</td>
+<td style="text-align:center">0.18275</td>
+<td style="text-align:center">0.16784</td>
+<td style="text-align:center">0.02219</td>
+<td style="text-align:center">0.00452</td>
+<td style="text-align:center">0.00100</td>
+<td style="text-align:center">0.00023</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.35853</td>
+<td style="text-align:center">0.32174</td>
+<td style="text-align:center">0.27438</td>
+<td style="text-align:center">0.26214</td>
+<td style="text-align:center">0.24200</td>
+<td style="text-align:center">0.13998</td>
+<td style="text-align:center">0.05599</td>
+<td style="text-align:center">0.01579</td>
+<td style="text-align:center">0.00384</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.38682</td>
+<td style="text-align:center">0.35278</td>
+<td style="text-align:center">0.32552</td>
+<td style="text-align:center">0.30499</td>
+<td style="text-align:center">0.29421</td>
+<td style="text-align:center">0.26850</td>
+<td style="text-align:center">0.21300</td>
+<td style="text-align:center">0.13890</td>
+<td style="text-align:center">0.05342</td>
+</tr>
+<tr>
+<td style="text-align:center">31</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.35787</td>
+<td style="text-align:center">0.35047</td>
+<td style="text-align:center">0.32395</td>
+<td style="text-align:center">0.31365</td>
+<td style="text-align:center">0.30237</td>
+<td style="text-align:center">0.28430</td>
+<td style="text-align:center">0.25031</td>
+<td style="text-align:center">0.18238</td>
+<td style="text-align:center">0.09237</td>
+</tr>
+<tr>
+<td style="text-align:center">32</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">0.37260</td>
+<td style="text-align:center">0.33624</td>
+<td style="text-align:center">0.29446</td>
+<td style="text-align:center">0.31031</td>
+<td style="text-align:center">0.29363</td>
+<td style="text-align:center">0.26926</td>
+<td style="text-align:center">0.22353</td>
+<td style="text-align:center">0.14192</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h2 id="%E6%89%80%E5%BE%97%E7%BB%93%E8%AE%BA"><strong>所得结论</strong></h2>
+<hr>
+<ul>
+<li>总的来说，每个程序都时随进程数的增加，运行时间增加，加速比先增加后降低(进程开销)，效率降低。</li>
+<li>使用点对点通信函数和集合通信函数实现梯形积分，由上一点的前六个表格可知，集合通信函数实现的梯形数值积瑕积分法在运行时间上相较于点对点通信来说要短一些，而且对于加速比来说计算相同积分时，集合通信函数的加速比也较高，受进程数增长而降低的趋势也较小。</li>
+<li>使用自适应区间对带瑕点函数进行积分，在运行时间上相比较于划分好区间的梯形积分法肯定是慢一些，但可以控制其精度以及分块次数，实现不同精度的求积分。而在这里使用L作为因变量，可以看出：
+<ul>
+<li>随着求积范围的变大，在相同进程数时运行时间变长，在进程数小的时候加速比，效率变大幅度不大，在进程数大时，加速比，效率变大幅度较高。</li>
+<li>随着进程数的变多，在相同求积范围时运行时间先变短后变长，加速比也是先变大后变小，效率亦是如此。</li>
+</ul>
+</li>
+<li>对于PSRS排序的运行结果也同样如此，
+<ul>
+<li>随着排序规模变大，在相同进程数时运行时间变长，在进程数小的时候加速比，效率变大幅度不大，在进程数大时，加速比，效率变大幅度较高。</li>
+<li>随着进程数的变多，在相同求积范围时运行时间先变短后变长，加速比也是先变大后变小，效率亦是如此。</li>
+</ul>
+</li>
+<li>尽管存在数据波动的影响，但经过十次地求平均和，应该可以减少影响，得出较为普遍的规律。</li>
+</ul>
+<h2 id="%E6%89%80%E9%81%87%E9%9A%BE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><strong>所遇难题及解决思路</strong></h2>
+<hr>
+<ol>
+<li>
+<p>利用点对点通信函数，集合通信函数求数值积分，相对简单。主要遇到的难点在于对瑕积分进行扩展时，一开始我总是十分疑惑在瑕点时怎么求积分呢，难道不是趋于无穷吗，怎么可能求得出来呢。后来我只能通过限制精度以及分区块数来限制瑕点对求积分造成的影响，以使程序能够运行成功得到积分数值。尽管在(0,L]区间，得到的积分必然会超出double或者long double的范围。而对于0点的数值无法求得那也只好令f(0)=f(eps)得到一个近似值。</p>
+</li>
+<li>
+<p>另外，在写PSRS排序时，使用归并排序时也是一个难点，如何对存于一个数组中不同进程发来的数据进行归并排序着实困惑了我一段时间。后来还是在网上借鉴了别人的想法，利用结构体记录具体的不同进程数据的具体位置，以及采用一个优先队列简化了原本复杂的排序过程，此间还需要对&lt;的operator进行重载。</p>
+</li>
+<li>
+<p>还有在PSRS还遇到了溢出的问题。没想到MPI_Alltoallv中的sendcounts, sdispls, recvcounts, rdispls都是 const int *类型，不能是 unsigned long * 类型。所以数据发送的长度不能超过2^31-1,因此在进程数 p=2 和总数据量为 2^32 的情况下运行一定会出现错误（因为分成的两段数据一定有一段要超过 2^31 −1)。</p>
+</li>
+</ol>
+<h2 id="%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><strong>心得体会</strong></h2>
+<hr>
+<p>总的来说，这次实验虽然看起来表面简单，但其实上需要思考处理的问题挺难的。在求瑕积分时瑕点的求积着实困扰了我很久，最后还是查阅了数值积分的书籍，用自适应积分解决了问题，尽管可能和老师的想法有些偏差，但是我想核心是差不多的，都是对区间进行合理分块，并且通过进程间通信来解决问题。PSRS排序也差不多都是通过点对点以及集合通信的MPI函数来实现多进程执行并完成复杂的工作。<br>
+另外，这次的工作量其实也挺大的，四个程序，每个程序都要求不同进程数，不同规模大小的平均时间以及加速比和效率，同样也花费了不少时间，而且在集群中跑的时间也需要花费不少，产生了十分多的数据。<br>
+<img src="ex_10.png" alt=""><br>
+综上所述，通过这次实验，我对MPI函数的运行更加熟悉，也对进程间的通信更加了解了，获益匪浅。</p>
+
+</body>
+</html>
