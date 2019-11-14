@@ -1,0 +1,14 @@
+#PBS -N gzy_ex5_matrix_vector
+#PBS -l nodes=16:ppn=32
+#PBS -j oe
+
+echo "This is gzy's lab"$PBS_JOBID@PBS_QUEUE
+cd $PBS_O_WORKDIR
+source /public/software/profile.d/mpi_openmpi-intel-2.1.2.sh
+mpiexec -np 1 ./matrix-vector 6
+mpiexec -np 2 ./matrix-vector 6
+mpiexec -np 4 ./matrix-vector 6
+mpiexec -np 8 ./matrix-vector 6
+mpiexec -np 12 ./matrix-vector 6
+mpiexec -np 16 ./matrix-vector 6
+
