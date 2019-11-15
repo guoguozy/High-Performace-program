@@ -5,10 +5,6 @@
 echo "This is gzy's lab"$PBS_JOBID@PBS_QUEUE
 cd $PBS_O_WORKDIR
 source /public/software/profile.d/mpi_openmpi-intel-2.1.2.sh
-mpiexec -np 1 ./matrix-vector 6
-mpiexec -np 2 ./matrix-vector 6
+
 mpiexec -np 4 ./matrix-vector 6
-mpiexec -np 8 ./matrix-vector 6
-mpiexec -np 12 ./matrix-vector 6
-mpiexec -np 16 ./matrix-vector 6
 
