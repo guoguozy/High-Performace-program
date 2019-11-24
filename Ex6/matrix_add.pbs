@@ -1,0 +1,7 @@
+#PBS -N matAdd                      
+#PBS -l nodes=1:ppn=32:gpus=1
+#PBS -j oe
+#PBS -q gpu
+source /public/software/profile.d/cuda10.0.sh
+nvcc matrix_add.cu -o matrix_add
+./matrix_add

@@ -1,0 +1,7 @@
+#PBS -N test                     
+#PBS -l nodes=1:ppn=32:gpus=1
+#PBS -j oe
+#PBS -q gpu
+source /public/software/profile.d/cuda10.0.sh
+nvcc test.cu -o test
+./test

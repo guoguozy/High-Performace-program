@@ -1,0 +1,4 @@
+- helloworld.cu为helloworld代码，helloworld.pbs为其pbs文件，helloworld为可执行文件，helloworld.oxxx为其输出文件
+- matrix_add.cu为矩阵相加代码，matrix_add.pbs为其pbs文件，matrix_add为可执行文件，matrix_add.oxxx为其输出
+- test.cu为测试集群GPU代码，用于查看最大可用线程数，test.pbs为其pbs文件，test为可执行文件，test.oxxx为其输出
+- [report.pdf](./report.pdf)为实验报告  

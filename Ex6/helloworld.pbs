@@ -1,0 +1,11 @@
+###声明作业名为hello
+#PBS -N hello       
+###申请资源数为2个节点，每个节点32个核                             
+#PBS -l nodes=2:ppn=32
+###将标准输出信息与标准错误信息合并输出到文件中
+#PBS -j oe
+###指定作业提交到gpu队列
+#PBS –q gpu
+source /public/software/profile.d/cuda10.0.sh
+nvcc helloworld.cu -o helloworld
+./helloworld

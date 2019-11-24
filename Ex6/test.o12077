@@ -1,0 +1,16 @@
+Device Name : Tesla V100-PCIE-16GB-LS.
+totalGlobalMem : -265814016.
+sharedMemPerBlock : 49152.
+regsPerBlock : 65536.
+warpSize : 32.
+memPitch : 2147483647.
+maxThreadsPerBlock : 1024.
+maxThreadsDim[0 - 2] : 1024 1024 64.
+maxGridSize[0 - 2] : 2147483647 65535 65535.
+totalConstMem : 65536.
+major.minor : 7.0.
+clockRate : 1297000.
+textureAlignment : 512.
+deviceOverlap : 1.
+multiProcessorCount : 80.
+CUDA initialized.
