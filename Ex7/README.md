@@ -1,0 +1,7 @@
+- global_memory.cu为使用global memory实现矩阵向量乘代码  
+- constant_memory.cu为使用constant memory实现矩阵向量乘代码  
+- hebing.cu为使用合并访问实现矩阵向量乘代码  
+- shared_memory.cu为使用shared memory实现矩阵向量乘代码  
+- [report.pdf](report.md)为实验报告
+- ex7.oxxx为示例输出
+- [test.pbs](test.pbs)为示例pbs脚本
