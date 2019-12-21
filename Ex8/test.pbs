@@ -1,0 +1,8 @@
+#PBS -N ex8
+#PBS -l nodes=1:ppn=32:gpus=1
+#PBS -j oe
+#PBS -q gpu
+
+source /public/software/profile.d/cuda10.0.sh
+nvcc shared_memory.cu -o shared_memory
+./shared_memory

@@ -1,0 +1,5 @@
+- global_memory.cu为使用global memory实现矩阵乘代码  
+- shared_memory.cu为使用shared memory实现矩阵乘代码  
+- [report.pdf](report.md)为实验报告
+- ex8.oxxx为示例输出
+- [test.pbs](test.pbs)为示例pbs脚本
